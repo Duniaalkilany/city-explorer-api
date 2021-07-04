@@ -14,12 +14,14 @@ let lon =req.query.lon
 let arrOfData=[]
 if (lat&&lon){
   if (cache.data.length >0 ){
-    // console.log('Cache hit');
+  
     arrOfData=cache.data.map(data=>new Weather(data))
+     
     console.log('data come from cache');
+       console.log('Cache hit');
     res.send(arrOfData)
   }else{ 
-    // console.log('Cache miss');
+  
     const weatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?key=${WEATHER_API_KEY}&lat=${lat}&lon=${lon}`;
     
     
@@ -27,6 +29,7 @@ if (lat&&lon){
 arrOfData = weatherData.body.data.map(data => new Weather(data));
 cache['data']=weatherData.body.data
 console.log('data come from api');
+ console.log('Cache miss');
         res.send(arrOfData);
         if(arrOfData===0){res.status(500).send('Something went wrong')}
   }).catch(error=>res.send( error));
