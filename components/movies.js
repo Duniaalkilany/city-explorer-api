@@ -35,10 +35,10 @@ class Movie {
       this.title = mov.title;
       this.overview = mov.overview;
       this.average_votes = mov.vote_average;
-      this.total_votes = mov.vote_count;
       this.image_url = `https://image.tmdb.org/t/p/w300/${mov.poster_path}`;
       this.popularity = mov.popularity;
-      this.released_date = mov.release_date;
+      this.released_date = mov.release_date
+  
      
     }
   }
